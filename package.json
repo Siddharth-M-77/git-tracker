@@ -1,0 +1,14 @@
+{
+  "name": "gitpulse-saas",
+  "version": "1.0.0",
+  "description": "GitPulse - Enterprise Developer Intelligence & GitHub Access Control SaaS",
+  "scripts": {
+    "server": "npm --prefix server start",
+    "server:dev": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build"
+  },
+  "keywords": ["github-tracker", "developer-velocity", "access-control", "saas", "razorpay", "google-auth"],
+  "author": "Siddharth",
+  "license": "MIT"
+}
