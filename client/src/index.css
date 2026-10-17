@@ -263,17 +263,148 @@ code, .font-mono {
   display: none;
 }
 
-/* Responsive Media Queries */
+/* ==========================================================================
+   Responsive Grid & Layout System (Mobile, Tablet, Laptop, Ultrawide)
+   ========================================================================== */
+
+.responsive-page-container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+  .responsive-page-container {
+    padding: 0 16px;
+  }
+}
+
+/* 3-Column Responsive Grid */
+.responsive-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .responsive-grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 680px) {
+  .responsive-grid-3 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+
+/* 4-Column Responsive Grid (KPI Cards & Stats) */
+.responsive-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 1200px) {
+  .responsive-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 580px) {
+  .responsive-grid-4 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+}
+
+/* 2-Column Responsive Grid */
+.responsive-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 860px) {
+  .responsive-grid-2 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+}
+
+/* Hero Section Responsiveness */
+.hero-tabs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .hero-tabs-bar {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+  .hero-tab-btn {
+    padding: 8px 10px !important;
+    font-size: 0.775rem !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-tabs-bar {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Floating Badges On Mobile */
+@media (max-width: 860px) {
+  .hero-floating-badges-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-top: 16px !important;
+  }
+  .hero-floating-badge {
+    position: static !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Table Responsive Wrapper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+  min-width: 600px;
+}
+
+/* Responsive Navigation Bar */
 @media (max-width: 900px) {
   .desktop-nav {
     display: none !important;
   }
   .mobile-menu-btn {
-    display: block !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-@media (max-width: 768px) {
+/* Dashboard Sidebar & Container on Mobile */
+@media (max-width: 820px) {
   .app-container {
     flex-direction: column !important;
   }
@@ -282,9 +413,40 @@ code, .font-mono {
     min-height: auto !important;
     border-right: none !important;
     border-bottom: 1px solid var(--border-subtle) !important;
+    padding: 12px 14px !important;
+  }
+  .app-sidebar nav {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding-bottom: 4px !important;
+    gap: 6px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .app-sidebar nav button {
+    white-space: nowrap !important;
+    padding: 8px 12px !important;
+    font-size: 0.8rem !important;
+    border-left: none !important;
+    border-bottom: 2px solid transparent !important;
+  }
+  .app-sidebar nav button[data-active="true"] {
+    border-bottom: 2px solid var(--accent-primary) !important;
+  }
+  .sidebar-status-card {
+    display: none !important;
   }
   .main-content {
-    padding: 20px 16px !important;
+    padding: 20px 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-primary, .btn-secondary {
+    padding: 8px 14px;
+    font-size: 0.825rem;
+  }
+  .hero-headline {
+    font-size: 2rem !important;
   }
 }
 
@@ -347,10 +509,11 @@ code, .font-mono {
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
   transition: transform 0.35s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.35s cubic-bezier(0.2, 0, 0, 1), border-color 0.35s ease;
   overflow: hidden;
+  max-width: 100%;
 }
 
 .card-3d:hover {
-  transform: translateY(-6px) scale(1.01);
+  transform: translateY(-4px) scale(1.005);
   border-color: rgba(99, 102, 241, 0.5);
   box-shadow: 0 28px 50px -12px rgba(99, 102, 241, 0.25), 0 0 30px rgba(99, 102, 241, 0.15), inset 0 1px 2px 0 rgba(255, 255, 255, 0.25);
 }
@@ -362,10 +525,11 @@ code, .font-mono {
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  padding: 10px;
+  padding: 8px;
   background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.25), rgba(15, 20, 34, 0.8));
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
 }
 
 .pedestal-3d img {
@@ -389,13 +553,27 @@ code, .font-mono {
   align-items: center;
   gap: 12px;
   padding: 8px 16px;
-  background: rgba(10, 14, 26, 0.85);
+  background: rgba(10, 14, 26, 0.9);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(99, 102, 241, 0.4);
   border-radius: 9999px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(99, 102, 241, 0.25);
   animation: float-slow 4s ease-in-out infinite;
+  max-width: 95vw;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .quick-switch-dock {
+    bottom: 12px;
+    width: calc(100% - 24px);
+    max-width: 400px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    gap: 8px;
+    justify-content: space-between;
+  }
 }
 
 /* Gradient Shimmer Text */
@@ -406,4 +584,5 @@ code, .font-mono {
   -webkit-text-fill-color: transparent;
   animation: shimmer 6s linear infinite;
 }
+
 

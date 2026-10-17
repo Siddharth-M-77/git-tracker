@@ -187,107 +187,109 @@ export default function AccessControlView({ repos, onGrantAccess, onRevokeAccess
           </div>
 
           {/* Collaborators Table */}
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-            <thead>
-              <tr style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                borderBottom: '1px solid var(--border-subtle)',
-                fontSize: '0.75rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                color: 'var(--text-muted)',
-              }}>
-                <th style={{ padding: '14px 18px' }}>Developer</th>
-                <th style={{ padding: '14px 18px' }}>Current Permission</th>
-                <th style={{ padding: '14px 18px' }}>Role Name</th>
-                <th style={{ padding: '14px 18px' }}>Access Scope</th>
-                <th style={{ padding: '14px 18px', textAlign: 'right' }}>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentRepo.collaborators && currentRepo.collaborators.length > 0 ? (
-                currentRepo.collaborators.map((collab, index) => (
-                  <tr
-                    key={index}
-                    style={{ borderBottom: '1px solid var(--border-subtle)' }}
-                  >
-                    {/* Developer Info */}
-                    <td style={{ padding: '14px 18px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        <img
-                          src={collab.avatar || `https://api.dicebear.com/7.x/identicon/svg?seed=${collab.username}`}
-                          alt={collab.username}
-                          style={{ width: 34, height: 34, borderRadius: '50%' }}
-                        />
-                        <div>
-                          <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>@{collab.username}</div>
-                          <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)' }}>GitHub Collaborator</div>
+          <div className="table-responsive">
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '650px' }}>
+              <thead>
+                <tr style={{
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderBottom: '1px solid var(--border-subtle)',
+                  fontSize: '0.75rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  color: 'var(--text-muted)',
+                }}>
+                  <th style={{ padding: '14px 18px' }}>Developer</th>
+                  <th style={{ padding: '14px 18px' }}>Current Permission</th>
+                  <th style={{ padding: '14px 18px' }}>Role Name</th>
+                  <th style={{ padding: '14px 18px' }}>Access Scope</th>
+                  <th style={{ padding: '14px 18px', textAlign: 'right' }}>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentRepo.collaborators && currentRepo.collaborators.length > 0 ? (
+                  currentRepo.collaborators.map((collab, index) => (
+                    <tr
+                      key={index}
+                      style={{ borderBottom: '1px solid var(--border-subtle)' }}
+                    >
+                      {/* Developer Info */}
+                      <td style={{ padding: '14px 18px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                          <img
+                            src={collab.avatar || `https://api.dicebear.com/7.x/identicon/svg?seed=${collab.username}`}
+                            alt={collab.username}
+                            style={{ width: 34, height: 34, borderRadius: '50%' }}
+                          />
+                          <div>
+                            <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>@{collab.username}</div>
+                            <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)' }}>GitHub Collaborator</div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
+                      </td>
 
-                    {/* Permission Badge & Quick Selector */}
-                    <td style={{ padding: '14px 18px' }}>
-                      <select
-                        value={collab.permission}
-                        onChange={(e) => handleQuickPermissionChange(collab.username, e.target.value)}
-                        style={{
-                          background: 'rgba(255, 255, 255, 0.06)',
-                          color: '#fff',
-                          border: '1px solid var(--border-subtle)',
-                          borderRadius: '6px',
-                          padding: '4px 8px',
-                          fontSize: '0.8rem',
-                          fontFamily: 'var(--font-body)',
-                          cursor: 'pointer',
-                          fontWeight: 600,
-                        }}
-                      >
-                        <option value="admin">Admin (Full Control)</option>
-                        <option value="maintain">Maintain (Manage)</option>
-                        <option value="push">Push (Read & Write)</option>
-                        <option value="triage">Triage (Issues & PRs)</option>
-                        <option value="pull">Pull (Read Only)</option>
-                      </select>
-                    </td>
+                      {/* Permission Badge & Quick Selector */}
+                      <td style={{ padding: '14px 18px' }}>
+                        <select
+                          value={collab.permission}
+                          onChange={(e) => handleQuickPermissionChange(collab.username, e.target.value)}
+                          style={{
+                            background: 'rgba(255, 255, 255, 0.06)',
+                            color: '#fff',
+                            border: '1px solid var(--border-subtle)',
+                            borderRadius: '6px',
+                            padding: '4px 8px',
+                            fontSize: '0.8rem',
+                            fontFamily: 'var(--font-body)',
+                            cursor: 'pointer',
+                            fontWeight: 600,
+                          }}
+                        >
+                          <option value="admin">Admin (Full Control)</option>
+                          <option value="maintain">Maintain (Manage)</option>
+                          <option value="push">Push (Read & Write)</option>
+                          <option value="triage">Triage (Issues & PRs)</option>
+                          <option value="pull">Pull (Read Only)</option>
+                        </select>
+                      </td>
 
-                    {/* Role Name */}
-                    <td style={{ padding: '14px 18px' }}>
-                      <span className={getBadgeClass(collab.permission)}>
-                        {collab.roleName || collab.permission.toUpperCase()}
-                      </span>
-                    </td>
+                      {/* Role Name */}
+                      <td style={{ padding: '14px 18px' }}>
+                        <span className={getBadgeClass(collab.permission)}>
+                          {collab.roleName || collab.permission.toUpperCase()}
+                        </span>
+                      </td>
 
-                    {/* Access Scope Description */}
-                    <td style={{ padding: '14px 18px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                      {collab.permission === 'admin' && 'Full administrative rights, delete repo & manage webhooks'}
-                      {collab.permission === 'maintain' && 'Manage repository, branches, and code reviews'}
-                      {collab.permission === 'push' && 'Push code, create branches & open/merge pull requests'}
-                      {collab.permission === 'triage' && 'Manage issues, discussions, and pull requests'}
-                      {collab.permission === 'pull' && 'Clone and view repository contents only'}
-                    </td>
+                      {/* Access Scope Description */}
+                      <td style={{ padding: '14px 18px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                        {collab.permission === 'admin' && 'Full administrative rights, delete repo & manage webhooks'}
+                        {collab.permission === 'maintain' && 'Manage repository, branches, and code reviews'}
+                        {collab.permission === 'push' && 'Push code, create branches & open/merge pull requests'}
+                        {collab.permission === 'triage' && 'Manage issues, discussions, and pull requests'}
+                        {collab.permission === 'pull' && 'Clone and view repository contents only'}
+                      </td>
 
-                    {/* Revoke Action */}
-                    <td style={{ padding: '14px 18px', textAlign: 'right' }}>
-                      <button
-                        onClick={() => handleRevoke(collab.username)}
-                        className="btn-danger"
-                        title="Revoke access immediately"
-                      >
-                        <Trash2 size={13} /> Revoke
-                      </button>
+                      {/* Revoke Action */}
+                      <td style={{ padding: '14px 18px', textAlign: 'right' }}>
+                        <button
+                          onClick={() => handleRevoke(collab.username)}
+                          className="btn-danger"
+                          title="Revoke access immediately"
+                        >
+                          <Trash2 size={13} /> Revoke
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="5" style={{ padding: '30px', textAlign: 'center', color: 'var(--text-muted)' }}>
+                      No collaborators found for this repository. Click "Grant New Access" to invite one!
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="5" style={{ padding: '30px', textAlign: 'center', color: 'var(--text-muted)' }}>
-                    No collaborators found for this repository. Click "Grant New Access" to invite one!
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : null}
 

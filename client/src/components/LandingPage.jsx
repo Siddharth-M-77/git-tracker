@@ -130,7 +130,7 @@ export default function LandingPage({
 
   // ROI Calculations
   const hoursSavedPerMonth = Math.round(teamSize * 1.8 + commitsPerWeek * 0.15);
-  const costSavingsPerMonth = Math.round(hoursSavedPerMonth * 45); // Assuming $45/hr avg cost
+  const costSavingsPerMonth = Math.round(hoursSavedPerMonth * 45);
 
   const faqs = [
     {
@@ -156,7 +156,7 @@ export default function LandingPage({
   ];
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', background: 'var(--bg-primary)', color: 'var(--text-primary)', overflowX: 'hidden' }}>
+    <div style={{ position: 'relative', minHeight: '100vh', background: 'var(--bg-primary)', color: 'var(--text-primary)', overflowX: 'hidden', width: '100%' }}>
       {/* 1. Interactive 3D Canvas Background */}
       <ThreeCanvasBackground />
 
@@ -166,66 +166,67 @@ export default function LandingPage({
           position: 'sticky',
           top: 0,
           zIndex: 100,
-          background: 'rgba(10, 13, 20, 0.82)',
+          background: 'rgba(10, 13, 20, 0.85)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           borderBottom: '1px solid var(--border-subtle)',
-          padding: '14px 28px',
+          padding: '12px 16px',
+          width: '100%',
         }}
       >
         <div
           style={{
-            maxWidth: '1280px',
+            maxWidth: '1360px',
             margin: '0 auto',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            gap: '12px',
           }}
         >
           {/* Brand Logo */}
           <div
-            style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', flexShrink: 0 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <div
               style={{
                 background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-                padding: '9px',
-                borderRadius: '12px',
+                padding: '8px',
+                borderRadius: '10px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#fff',
-                boxShadow: '0 0 20px rgba(99, 102, 241, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.4)',
+                boxShadow: '0 0 16px rgba(99, 102, 241, 0.5)',
               }}
             >
-              <GitBranch size={22} />
+              <GitBranch size={20} />
             </div>
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontWeight: 800, fontSize: '1.35rem', letterSpacing: '-0.03em' }}>GitPulse</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{ fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.03em' }}>GitPulse</span>
                 <span
                   style={{
-                    fontSize: '0.65rem',
+                    fontSize: '0.6rem',
                     textTransform: 'uppercase',
                     background: 'rgba(99, 102, 241, 0.25)',
                     color: '#c7d2fe',
-                    padding: '2px 7px',
-                    borderRadius: '6px',
+                    padding: '2px 6px',
+                    borderRadius: '4px',
                     fontWeight: 700,
-                    letterSpacing: '0.05em',
+                    letterSpacing: '0.04em',
                     border: '1px solid rgba(99, 102, 241, 0.3)',
                   }}
                 >
                   SaaS 3D
                 </span>
               </div>
-              <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Enterprise Engineering Intelligence</div>
             </div>
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '26px' }}>
+          <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '22px' }}>
             <a href="#hero-preview" className="nav-link">3D Nexus</a>
             <a href="#simulator" className="nav-link">Live Push Simulator</a>
             <a href="#features" className="nav-link">Capabilities</a>
@@ -235,25 +236,26 @@ export default function LandingPage({
           </nav>
 
           {/* Action CTAs */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
             {user ? (
               <button
                 onClick={onOpenDashboard}
                 className="btn-primary"
                 style={{
-                  fontSize: '0.875rem',
-                  padding: '9px 18px',
-                  boxShadow: '0 0 25px rgba(99, 102, 241, 0.5)',
+                  fontSize: '0.825rem',
+                  padding: '8px 14px',
+                  boxShadow: '0 0 20px rgba(99, 102, 241, 0.5)',
+                  whiteSpace: 'nowrap',
                 }}
               >
-                <Zap size={16} /> Enter Dashboard (@{user.username || user.name})
+                <Zap size={14} /> Dashboard ({user.username || user.name})
               </button>
             ) : (
               <>
                 <button
                   onClick={onOpenAuth}
                   className="btn-secondary"
-                  style={{ fontSize: '0.875rem', padding: '8px 16px' }}
+                  style={{ fontSize: '0.825rem', padding: '7px 12px' }}
                 >
                   Sign In
                 </button>
@@ -261,12 +263,13 @@ export default function LandingPage({
                   onClick={onLaunchDemo}
                   className="btn-primary"
                   style={{
-                    fontSize: '0.875rem',
-                    padding: '9px 20px',
-                    boxShadow: '0 0 25px rgba(99, 102, 241, 0.45)',
+                    fontSize: '0.825rem',
+                    padding: '8px 14px',
+                    boxShadow: '0 0 20px rgba(99, 102, 241, 0.45)',
+                    whiteSpace: 'nowrap',
                   }}
                 >
-                  <Zap size={15} /> Launch Live Demo
+                  <Zap size={14} /> Live Demo
                 </button>
               </>
             )}
@@ -274,9 +277,17 @@ export default function LandingPage({
             <button
               className="mobile-menu-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', padding: '4px' }}
+              style={{
+                background: 'rgba(255, 255, 255, 0.06)',
+                border: '1px solid var(--border-subtle)',
+                color: '#fff',
+                cursor: 'pointer',
+                padding: '6px',
+                borderRadius: '8px',
+              }}
+              aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -285,14 +296,15 @@ export default function LandingPage({
         {mobileMenuOpen && (
           <div
             style={{
-              padding: '18px 20px',
+              padding: '16px',
               borderTop: '1px solid var(--border-subtle)',
               background: 'var(--bg-secondary)',
               display: 'flex',
               flexDirection: 'column',
-              gap: '14px',
-              marginTop: '12px',
+              gap: '12px',
+              marginTop: '10px',
               borderRadius: 'var(--radius-md)',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.7)',
             }}
           >
             <a href="#hero-preview" onClick={() => setMobileMenuOpen(false)} className="nav-link">3D Nexus</a>
@@ -304,12 +316,13 @@ export default function LandingPage({
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onLaunchDemo();
+                if (user) onOpenDashboard();
+                else onLaunchDemo();
               }}
               className="btn-primary"
-              style={{ width: '100%', justifyContent: 'center' }}
+              style={{ width: '100%', justifyContent: 'center', padding: '10px' }}
             >
-              Launch Live Demo Dashboard
+              <Zap size={16} /> {user ? 'Open Dashboard' : 'Launch Live Demo Dashboard'}
             </button>
           </div>
         )}
@@ -319,44 +332,48 @@ export default function LandingPage({
       <section
         style={{
           position: 'relative',
-          padding: '80px 24px 50px',
+          padding: 'clamp(36px, 6vw, 75px) 16px 40px',
           textAlign: 'center',
           zIndex: 1,
+          width: '100%',
         }}
       >
-        <div style={{ maxWidth: '1020px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1080px', margin: '0 auto', width: '100%' }}>
           {/* Eyebrow Badge */}
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '10px',
+              gap: '8px',
               background: 'rgba(99, 102, 241, 0.12)',
               border: '1px solid rgba(99, 102, 241, 0.35)',
-              padding: '7px 20px',
+              padding: '6px 14px',
               borderRadius: '9999px',
-              fontSize: '0.85rem',
+              fontSize: 'clamp(0.72rem, 2vw, 0.85rem)',
               color: '#c7d2fe',
               fontWeight: 600,
-              marginBottom: '26px',
+              marginBottom: '20px',
               backdropFilter: 'blur(10px)',
-              boxShadow: '0 4px 20px rgba(99, 102, 241, 0.2)',
+              maxWidth: '100%',
+              boxSizing: 'border-box',
             }}
           >
             <div className="pulse-dot" />
-            <span className="shimmer-text" style={{ fontWeight: 700 }}>
+            <span className="shimmer-text" style={{ fontWeight: 700, wordBreak: 'break-word' }}>
               Next-Gen 3D Engineering Intelligence & Real-Time GitOps RBAC
             </span>
           </div>
 
-          {/* Massive Headline */}
+          {/* Headline */}
           <h1
+            className="hero-headline"
             style={{
-              fontSize: 'clamp(2.4rem, 5.8vw, 4.3rem)',
+              fontSize: 'clamp(1.85rem, 5.2vw, 4.1rem)',
               fontWeight: 800,
               lineHeight: 1.15,
               letterSpacing: '-0.035em',
-              marginBottom: '24px',
+              marginBottom: '20px',
+              wordBreak: 'break-word',
             }}
           >
             Track Every Line Pushed.{' '}
@@ -367,11 +384,12 @@ export default function LandingPage({
           {/* Subtitle */}
           <p
             style={{
-              fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+              fontSize: 'clamp(0.925rem, 2vw, 1.2rem)',
               color: 'var(--text-secondary)',
-              lineHeight: 1.65,
-              maxWidth: '820px',
-              margin: '0 auto 38px',
+              lineHeight: 1.6,
+              maxWidth: '800px',
+              margin: '0 auto 32px',
+              padding: '0 8px',
             }}
           >
             The enterprise developer telemetry platform. Monitor commits, branch diffs (+/- lines),
@@ -385,29 +403,29 @@ export default function LandingPage({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '16px',
+              gap: '12px',
               flexWrap: 'wrap',
-              marginBottom: '40px',
+              marginBottom: '32px',
             }}
           >
             <button
               onClick={user ? onOpenDashboard : onLaunchDemo}
               className="btn-primary"
               style={{
-                fontSize: '1.05rem',
-                padding: '14px 32px',
+                fontSize: 'clamp(0.9rem, 2vw, 1.05rem)',
+                padding: '12px 26px',
                 borderRadius: '12px',
-                boxShadow: '0 10px 30px rgba(99, 102, 241, 0.4), 0 0 40px rgba(139, 92, 246, 0.25)',
+                boxShadow: '0 10px 30px rgba(99, 102, 241, 0.4)',
               }}
             >
-              <Zap size={20} /> {user ? 'Open Live Dashboard →' : 'Launch Live Demo Dashboard'}
+              <Zap size={18} /> {user ? 'Open Live Dashboard →' : 'Launch Live Demo Dashboard'}
             </button>
             <button
               onClick={onOpenAuth}
               className="btn-secondary"
-              style={{ fontSize: '1.05rem', padding: '13px 26px', borderRadius: '12px' }}
+              style={{ fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', padding: '11px 22px', borderRadius: '12px' }}
             >
-              Sign In with Google / Email <ArrowRight size={18} />
+              Sign In <ArrowRight size={16} />
             </button>
           </div>
 
@@ -416,167 +434,194 @@ export default function LandingPage({
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '16px',
-              padding: '8px 20px',
-              background: 'rgba(15, 20, 34, 0.7)',
+              gap: '10px',
+              padding: '8px 16px',
+              background: 'rgba(15, 20, 34, 0.75)',
               border: '1px solid var(--border-subtle)',
               borderRadius: '9999px',
-              fontSize: '0.8rem',
+              fontSize: '0.75rem',
               color: 'var(--text-muted)',
               flexWrap: 'wrap',
               justifyContent: 'center',
               backdropFilter: 'blur(12px)',
+              maxWidth: '100%',
+              boxSizing: 'border-box',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#34d399' }}>
               <div className="pulse-dot" />
-              <span style={{ fontWeight: 600 }}>Webhooks: 100% Operational</span>
+              <span style={{ fontWeight: 600 }}>Webhooks Active</span>
             </div>
             <span>•</span>
-            <div>{metrics?.totalRepos || 4} Repositories Synchronized</div>
+            <div>{metrics?.totalRepos || 4} Repos Synchronized</div>
             <span>•</span>
             <div>{metrics?.totalCommits || 60} Processed Commits</div>
             <span>•</span>
-            <div>&lt; 180ms Ingestion Latency</div>
+            <div>&lt; 180ms Latency</div>
           </div>
         </div>
 
         {/* 4. Interactive 3D Hero Showcase & Perspective View */}
-        <div id="hero-preview" style={{ maxWidth: '1160px', margin: '50px auto 0', position: 'relative' }}>
+        <div id="hero-preview" className="responsive-page-container" style={{ marginTop: '40px' }}>
           {/* Interactive Mode Tabs */}
           <div
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '6px',
-              background: 'rgba(15, 20, 34, 0.85)',
-              border: '1px solid var(--border-subtle)',
-              borderRadius: '14px',
-              marginBottom: '20px',
-              backdropFilter: 'blur(16px)',
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%',
+              marginBottom: '16px',
             }}
           >
-            <button
-              onClick={() => setActiveHeroTab('nexus')}
+            <div
+              className="hero-tabs-bar"
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 16px',
-                borderRadius: '10px',
-                border: 'none',
-                background: activeHeroTab === 'nexus' ? 'linear-gradient(135deg, #6366f1, #8b5cf6)' : 'transparent',
-                color: activeHeroTab === 'nexus' ? '#fff' : 'var(--text-secondary)',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                transition: 'all 0.2s',
+                background: 'rgba(15, 20, 34, 0.85)',
+                border: '1px solid var(--border-subtle)',
+                borderRadius: '14px',
+                padding: '6px',
+                backdropFilter: 'blur(16px)',
               }}
             >
-              <Sparkles size={16} /> 3D GitOps Nexus
-            </button>
-            <button
-              onClick={() => setActiveHeroTab('stream')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 16px',
-                borderRadius: '10px',
-                border: 'none',
-                background: activeHeroTab === 'stream' ? 'linear-gradient(135deg, #6366f1, #8b5cf6)' : 'transparent',
-                color: activeHeroTab === 'stream' ? '#fff' : 'var(--text-secondary)',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-              }}
-            >
-              <Activity size={16} /> Live Push Stream
-            </button>
-            <button
-              onClick={() => setActiveHeroTab('leaderboard')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 16px',
-                borderRadius: '10px',
-                border: 'none',
-                background: activeHeroTab === 'leaderboard' ? 'linear-gradient(135deg, #6366f1, #8b5cf6)' : 'transparent',
-                color: activeHeroTab === 'leaderboard' ? '#fff' : 'var(--text-secondary)',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-              }}
-            >
-              <Trophy size={16} /> Leaderboard Podium
-            </button>
-            <button
-              onClick={() => setActiveHeroTab('rbac')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 16px',
-                borderRadius: '10px',
-                border: 'none',
-                background: activeHeroTab === 'rbac' ? 'linear-gradient(135deg, #6366f1, #8b5cf6)' : 'transparent',
-                color: activeHeroTab === 'rbac' ? '#fff' : 'var(--text-secondary)',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-              }}
-            >
-              <KeyRound size={16} /> 1-Click Access Hub
-            </button>
+              <button
+                className="hero-tab-btn"
+                onClick={() => setActiveHeroTab('nexus')}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 14px',
+                  borderRadius: '10px',
+                  border: 'none',
+                  background: activeHeroTab === 'nexus' ? 'linear-gradient(135deg, #6366f1, #8b5cf6)' : 'transparent',
+                  color: activeHeroTab === 'nexus' ? '#fff' : 'var(--text-secondary)',
+                  fontSize: '0.825rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <Sparkles size={15} /> 3D GitOps Nexus
+              </button>
+              <button
+                className="hero-tab-btn"
+                onClick={() => setActiveHeroTab('stream')}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 14px',
+                  borderRadius: '10px',
+                  border: 'none',
+                  background: activeHeroTab === 'stream' ? 'linear-gradient(135deg, #6366f1, #8b5cf6)' : 'transparent',
+                  color: activeHeroTab === 'stream' ? '#fff' : 'var(--text-secondary)',
+                  fontSize: '0.825rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <Activity size={15} /> Live Push Stream
+              </button>
+              <button
+                className="hero-tab-btn"
+                onClick={() => setActiveHeroTab('leaderboard')}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 14px',
+                  borderRadius: '10px',
+                  border: 'none',
+                  background: activeHeroTab === 'leaderboard' ? 'linear-gradient(135deg, #6366f1, #8b5cf6)' : 'transparent',
+                  color: activeHeroTab === 'leaderboard' ? '#fff' : 'var(--text-secondary)',
+                  fontSize: '0.825rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <Trophy size={15} /> Leaderboard Podium
+              </button>
+              <button
+                className="hero-tab-btn"
+                onClick={() => setActiveHeroTab('rbac')}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 14px',
+                  borderRadius: '10px',
+                  border: 'none',
+                  background: activeHeroTab === 'rbac' ? 'linear-gradient(135deg, #6366f1, #8b5cf6)' : 'transparent',
+                  color: activeHeroTab === 'rbac' ? '#fff' : 'var(--text-secondary)',
+                  fontSize: '0.825rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <KeyRound size={15} /> 1-Click Access Hub
+              </button>
+            </div>
           </div>
 
           {/* Main 3D Card Showcase */}
-          <div className="card-3d" style={{ padding: '24px', textAlign: 'left', minHeight: '440px' }}>
+          <div
+            className="card-3d"
+            style={{
+              padding: 'clamp(14px, 3vw, 24px)',
+              textAlign: 'left',
+              width: '100%',
+              boxSizing: 'border-box',
+            }}
+          >
             {/* Top Browser Bar */}
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                paddingBottom: '16px',
+                paddingBottom: '14px',
                 borderBottom: '1px solid var(--border-subtle)',
-                marginBottom: '20px',
+                marginBottom: '16px',
+                gap: '8px',
+                flexWrap: 'wrap',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#ef4444' }} />
-                <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#f59e0b' }} />
-                <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#10b981' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
+                <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ef4444', flexShrink: 0 }} />
+                <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#f59e0b', flexShrink: 0 }} />
+                <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#10b981', flexShrink: 0 }} />
                 <span
                   style={{
-                    fontSize: '0.82rem',
+                    fontSize: '0.75rem',
                     color: 'var(--text-muted)',
                     fontFamily: 'var(--font-mono)',
-                    marginLeft: '12px',
+                    marginLeft: '8px',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
                   }}
                 >
-                  gitpulse-saas-nexus • https://gitpulse.dev/acme-corp/telemetry
+                  gitpulse-saas-nexus • https://gitpulse.dev/telemetry
                 </span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <button
-                  onClick={onLaunchDemo}
-                  className="btn-primary"
-                  style={{ fontSize: '0.75rem', padding: '5px 12px' }}
-                >
-                  Launch Fullscreen ↗
-                </button>
-              </div>
+              <button
+                onClick={onLaunchDemo}
+                className="btn-primary"
+                style={{ fontSize: '0.725rem', padding: '5px 10px', flexShrink: 0 }}
+              >
+                Launch App ↗
+              </button>
             </div>
 
             {/* Content View 1: 3D Nexus Isometric Showcase */}
             {activeHeroTab === 'nexus' && (
-              <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden' }}>
+              <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', width: '100%' }}>
                 <img
                   src="/assets/hero_3d_nexus.jpg"
                   alt="3D GitOps Nexus Platform"
@@ -591,64 +636,66 @@ export default function LandingPage({
                   }}
                 />
 
-                {/* Floating 3D Holographic Badges */}
-                <div
-                  className="float-3d"
-                  style={{
-                    position: 'absolute',
-                    top: '20px',
-                    left: '20px',
-                    background: 'rgba(10, 14, 26, 0.85)',
-                    backdropFilter: 'blur(16px)',
-                    border: '1px solid rgba(99, 102, 241, 0.4)',
-                    borderRadius: '12px',
-                    padding: '12px 18px',
-                    boxShadow: '0 12px 30px rgba(0,0,0,0.6)',
-                  }}
-                >
-                  <div style={{ fontSize: '0.7rem', color: '#a5b4fc', textTransform: 'uppercase', fontWeight: 700 }}>
-                    Real-Time DORA Metrics
+                {/* Floating 3D Badges (Desktop Absolute, Mobile Responsive) */}
+                <div className="hero-floating-badges-wrap">
+                  <div
+                    className="hero-floating-badge float-3d"
+                    style={{
+                      position: 'absolute',
+                      top: '16px',
+                      left: '16px',
+                      background: 'rgba(10, 14, 26, 0.88)',
+                      backdropFilter: 'blur(16px)',
+                      border: '1px solid rgba(99, 102, 241, 0.4)',
+                      borderRadius: '12px',
+                      padding: '10px 14px',
+                      boxShadow: '0 12px 30px rgba(0,0,0,0.6)',
+                    }}
+                  >
+                    <div style={{ fontSize: '0.68rem', color: '#a5b4fc', textTransform: 'uppercase', fontWeight: 700 }}>
+                      Real-Time DORA Metrics
+                    </div>
+                    <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#34d399', marginTop: '2px' }}>
+                      98.2% Build Success
+                    </div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Lead Time: &lt; 4h to Prod</div>
                   </div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#34d399', marginTop: '2px' }}>
-                    98.2% Build Success
-                  </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Lead Time: &lt; 4h to Prod</div>
-                </div>
 
-                <div
-                  className="float-3d-reverse"
-                  style={{
-                    position: 'absolute',
-                    bottom: '24px',
-                    right: '24px',
-                    background: 'rgba(10, 14, 26, 0.85)',
-                    backdropFilter: 'blur(16px)',
-                    border: '1px solid rgba(6, 182, 212, 0.4)',
-                    borderRadius: '12px',
-                    padding: '12px 18px',
-                    boxShadow: '0 12px 30px rgba(0,0,0,0.6)',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div className="pulse-dot" />
-                    <span style={{ fontSize: '0.75rem', color: '#22d3ee', fontWeight: 700 }}>
-                      Live GitHub Webhook Stream
-                    </span>
+                  <div
+                    className="hero-floating-badge float-3d-reverse"
+                    style={{
+                      position: 'absolute',
+                      bottom: '16px',
+                      right: '16px',
+                      background: 'rgba(10, 14, 26, 0.88)',
+                      backdropFilter: 'blur(16px)',
+                      border: '1px solid rgba(6, 182, 212, 0.4)',
+                      borderRadius: '12px',
+                      padding: '10px 14px',
+                      boxShadow: '0 12px 30px rgba(0,0,0,0.6)',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <div className="pulse-dot" />
+                      <span style={{ fontSize: '0.72rem', color: '#22d3ee', fontWeight: 700 }}>
+                        Live Webhook Ingestion
+                      </span>
+                    </div>
+                    <div style={{ fontSize: '1.05rem', fontWeight: 800, marginTop: '2px' }}>
+                      60 Commits Synced
+                    </div>
+                    <div style={{ fontSize: '0.72rem', color: '#34d399' }}>+8,506 / -3,159 Lines Diffed</div>
                   </div>
-                  <div style={{ fontSize: '1.1rem', fontWeight: 800, marginTop: '4px' }}>
-                    60 Commits Synchronized
-                  </div>
-                  <div style={{ fontSize: '0.75rem', color: '#34d399' }}>+8,506 / -3,159 Lines Diffed</div>
                 </div>
               </div>
             )}
 
             {/* Content View 2: Real-Time Push Stream Preview */}
             {activeHeroTab === 'stream' && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '10px 0' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#a5b4fc' }}>
-                    Incoming GitHub Push Events (Sub-second Ingestion)
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '8px 0' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#a5b4fc' }}>
+                    Incoming GitHub Push Events (&lt; 200ms Ingestion)
                   </div>
                   <span className="badge badge-push">Auto-refresh 15s</span>
                 </div>
@@ -658,48 +705,48 @@ export default function LandingPage({
                     style={{
                       background: 'rgba(255, 255, 255, 0.03)',
                       border: '1px solid var(--border-subtle)',
-                      borderRadius: '12px',
-                      padding: '14px 18px',
+                      borderRadius: '10px',
+                      padding: '12px 14px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      gap: '16px',
+                      gap: '12px',
                       flexWrap: 'wrap',
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: '1 1 240px' }}>
                       <img
                         src={p.avatar}
                         alt={p.author}
-                        style={{ width: 40, height: 40, borderRadius: '50%', border: '2px solid var(--accent-primary)' }}
+                        style={{ width: 34, height: 34, borderRadius: '50%', flexShrink: 0 }}
                       />
-                      <div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>@{p.author}</span>
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                          <span style={{ fontWeight: 700, fontSize: '0.85rem' }}>@{p.author}</span>
                           <span
                             style={{
                               fontFamily: 'var(--font-mono)',
-                              fontSize: '0.72rem',
+                              fontSize: '0.68rem',
                               background: 'rgba(99, 102, 241, 0.2)',
                               color: '#c7d2fe',
-                              padding: '2px 8px',
+                              padding: '2px 6px',
                               borderRadius: '4px',
                             }}
                           >
                             {p.branch}
                           </span>
                         </div>
-                        <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
+                        <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: '2px', wordBreak: 'break-word' }}>
                           {p.message}
                         </div>
                       </div>
                     </div>
-                    <div style={{ textAlign: 'right', fontFamily: 'var(--font-mono)' }}>
-                      <div>
+                    <div style={{ textAlign: 'right', fontFamily: 'var(--font-mono)', flexShrink: 0 }}>
+                      <div style={{ fontSize: '0.8rem' }}>
                         <span style={{ color: '#34d399', fontWeight: 700 }}>+{p.added}</span> /{' '}
                         <span style={{ color: '#f87171', fontWeight: 700 }}>-{p.deleted}</span>
                       </div>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>{p.time}</div>
+                      <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>{p.time}</div>
                     </div>
                   </div>
                 ))}
@@ -708,26 +755,26 @@ export default function LandingPage({
 
             {/* Content View 3: Leaderboard Podium Preview */}
             {activeHeroTab === 'leaderboard' && (
-              <div style={{ padding: '10px 0' }}>
-                <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#fbbf24', marginBottom: '16px' }}>
+              <div style={{ padding: '8px 0' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fbbf24', marginBottom: '14px' }}>
                   Engineering Velocity Podium (Top Committers)
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+                <div className="responsive-grid-3">
                   <div
                     style={{
                       background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(15, 20, 34, 0.8))',
                       border: '1px solid rgba(245, 158, 11, 0.3)',
                       borderRadius: '12px',
-                      padding: '18px',
+                      padding: '16px',
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span className="badge badge-maintain">Rank #1 Gold</span>
-                      <Trophy size={20} color="#fbbf24" />
+                      <Trophy size={18} color="#fbbf24" />
                     </div>
-                    <div style={{ fontSize: '1.25rem', fontWeight: 800, marginTop: '12px' }}>Rahul Sharma</div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Staff Backend Engineer</div>
-                    <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
+                    <div style={{ fontSize: '1.15rem', fontWeight: 800, marginTop: '10px' }}>Rahul Sharma</div>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Staff Backend Engineer</div>
+                    <div style={{ marginTop: '12px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                       <span className="badge badge-push">+10,413 Lines</span>
                       <span className="badge badge-admin">60 Commits</span>
                     </div>
@@ -738,16 +785,16 @@ export default function LandingPage({
                       background: 'rgba(255, 255, 255, 0.03)',
                       border: '1px solid var(--border-subtle)',
                       borderRadius: '12px',
-                      padding: '18px',
+                      padding: '16px',
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <span className="badge badge-pull">Rank #2 Silver</span>
                       <Trophy size={18} color="#94a3b8" />
                     </div>
-                    <div style={{ fontSize: '1.25rem', fontWeight: 800, marginTop: '12px' }}>Priya Patel</div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Lead Frontend Architect</div>
-                    <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
+                    <div style={{ fontSize: '1.15rem', fontWeight: 800, marginTop: '10px' }}>Priya Patel</div>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Lead Frontend Architect</div>
+                    <div style={{ marginTop: '12px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                       <span className="badge badge-push">+6,840 Lines</span>
                       <span className="badge badge-pull">42 Commits</span>
                     </div>
@@ -758,7 +805,7 @@ export default function LandingPage({
                       background: 'rgba(255, 255, 255, 0.03)',
                       border: '1px solid var(--border-subtle)',
                       borderRadius: '12px',
-                      padding: '18px',
+                      padding: '16px',
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -767,9 +814,9 @@ export default function LandingPage({
                       </span>
                       <Trophy size={18} color="#cd7f32" />
                     </div>
-                    <div style={{ fontSize: '1.25rem', fontWeight: 800, marginTop: '12px' }}>Arjun Verma</div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>DevOps & Security</div>
-                    <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
+                    <div style={{ fontSize: '1.15rem', fontWeight: 800, marginTop: '10px' }}>Arjun Verma</div>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>DevOps & Security</div>
+                    <div style={{ marginTop: '12px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                       <span className="badge badge-push">+4,210 Lines</span>
                       <span className="badge badge-maintain">35 Commits</span>
                     </div>
@@ -780,14 +827,14 @@ export default function LandingPage({
 
             {/* Content View 4: 1-Click Access Control Hub Preview */}
             {activeHeroTab === 'rbac' && (
-              <div style={{ padding: '10px 0' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                  <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--accent-primary)' }}>
+              <div style={{ padding: '8px 0' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap', gap: '6px' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--accent-primary)' }}>
                     GitHub Organization Collaborators & 1-Click RBAC
                   </div>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Direct GitHub API Integration</span>
+                  <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Direct GitHub API Integration</span>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {Object.entries(simulatedRoles).map(([username, role]) => (
                     <div
                       key={username}
@@ -795,14 +842,16 @@ export default function LandingPage({
                         background: 'rgba(255, 255, 255, 0.03)',
                         border: '1px solid var(--border-subtle)',
                         borderRadius: '10px',
-                        padding: '12px 16px',
+                        padding: '10px 14px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
+                        gap: '10px',
+                        flexWrap: 'wrap',
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>@{username}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>@{username}</span>
                         <span
                           className={`badge ${
                             role === 'admin'
@@ -817,7 +866,7 @@ export default function LandingPage({
                           {role.toUpperCase()}
                         </span>
                       </div>
-                      <div style={{ display: 'flex', gap: '8px' }}>
+                      <div style={{ display: 'flex', gap: '6px' }}>
                         <select
                           value={role}
                           onChange={(e) =>
@@ -827,9 +876,9 @@ export default function LandingPage({
                             background: 'var(--bg-tertiary)',
                             color: '#fff',
                             border: '1px solid var(--border-subtle)',
-                            padding: '4px 8px',
+                            padding: '4px 6px',
                             borderRadius: '6px',
-                            fontSize: '0.8rem',
+                            fontSize: '0.75rem',
                           }}
                         >
                           <option value="admin">Admin</option>
@@ -844,7 +893,7 @@ export default function LandingPage({
                             setSimulatedRoles(newRoles);
                           }}
                           className="btn-danger"
-                          style={{ padding: '4px 8px', fontSize: '0.75rem' }}
+                          style={{ padding: '4px 8px', fontSize: '0.725rem' }}
                         >
                           Revoke
                         </button>
@@ -861,23 +910,29 @@ export default function LandingPage({
       {/* 5. Interactive Live Push Simulator ("Test Drive in 1-Click") */}
       <section
         id="simulator"
+        className="responsive-page-container"
         style={{
-          padding: '70px 24px',
-          maxWidth: '1200px',
-          margin: '0 auto',
+          paddingTop: '50px',
+          paddingBottom: '50px',
           position: 'relative',
           zIndex: 1,
         }}
       >
-        <div className="card-3d" style={{ padding: '36px', background: 'linear-gradient(135deg, rgba(15, 20, 36, 0.9), rgba(10, 13, 24, 0.95))' }}>
+        <div
+          className="card-3d"
+          style={{
+            padding: 'clamp(20px, 4vw, 36px)',
+            background: 'linear-gradient(135deg, rgba(15, 20, 36, 0.9), rgba(10, 13, 24, 0.95))',
+          }}
+        >
           <div
             style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
               flexWrap: 'wrap',
-              gap: '20px',
-              marginBottom: '28px',
+              gap: '16px',
+              marginBottom: '24px',
             }}
           >
             <div>
@@ -887,17 +942,17 @@ export default function LandingPage({
                   alignItems: 'center',
                   gap: '6px',
                   color: '#34d399',
-                  fontSize: '0.8rem',
+                  fontSize: '0.78rem',
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
-                  marginBottom: '6px',
+                  marginBottom: '4px',
                 }}
               >
                 <Terminal size={14} /> Interactive Sandbox
               </div>
-              <h2 style={{ fontSize: '1.8rem', fontWeight: 800 }}>Simulate a Live Git Push Right Now</h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '4px' }}>
+              <h2 style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2rem)', fontWeight: 800 }}>Simulate a Live Git Push Right Now</h2>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginTop: '4px' }}>
                 Test our real-time webhook ingestion pipeline. Click below to fire a simulated commit and watch it process!
               </p>
             </div>
@@ -906,13 +961,14 @@ export default function LandingPage({
               disabled={isSimulating}
               className="btn-primary"
               style={{
-                fontSize: '0.95rem',
-                padding: '12px 24px',
+                fontSize: '0.9rem',
+                padding: '10px 20px',
                 background: 'linear-gradient(135deg, #10b981, #06b6d4)',
                 boxShadow: '0 0 25px rgba(16, 185, 129, 0.4)',
+                whiteSpace: 'nowrap',
               }}
             >
-              <Zap size={18} className={isSimulating ? 'animate-spin' : ''} />
+              <Zap size={16} className={isSimulating ? 'animate-spin' : ''} />
               {isSimulating ? 'Processing Webhook...' : '⚡ Push Simulated Commit to main'}
             </button>
           </div>
@@ -926,26 +982,26 @@ export default function LandingPage({
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  padding: '14px 18px',
+                  padding: '12px 16px',
                   background: 'rgba(255, 255, 255, 0.02)',
                   border: '1px solid var(--border-subtle)',
                   borderRadius: '10px',
-                  gap: '16px',
+                  gap: '12px',
                   flexWrap: 'wrap',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: '1 1 240px' }}>
                   <img
                     src={push.avatar}
                     alt={push.author}
-                    style={{ width: 36, height: 36, borderRadius: '50%' }}
+                    style={{ width: 34, height: 34, borderRadius: '50%', flexShrink: 0 }}
                   />
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
                       <span style={{ fontWeight: 700, fontSize: '0.85rem' }}>@{push.author}</span>
                       <span
                         style={{
-                          fontSize: '0.7rem',
+                          fontSize: '0.68rem',
                           fontFamily: 'var(--font-mono)',
                           background: 'rgba(6, 182, 212, 0.15)',
                           color: '#22d3ee',
@@ -956,15 +1012,15 @@ export default function LandingPage({
                         {push.branch}
                       </span>
                     </div>
-                    <div style={{ fontSize: '0.8rem', color: '#cbd5e1', marginTop: '2px' }}>
+                    <div style={{ fontSize: '0.78rem', color: '#cbd5e1', marginTop: '2px', wordBreak: 'break-word' }}>
                       "{push.message}"
                     </div>
                   </div>
                 </div>
-                <div style={{ textAlign: 'right', fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>
+                <div style={{ textAlign: 'right', fontFamily: 'var(--font-mono)', fontSize: '0.825rem', flexShrink: 0 }}>
                   <span style={{ color: '#34d399', fontWeight: 700 }}>+{push.added}</span> /{' '}
                   <span style={{ color: '#f87171', fontWeight: 700 }}>-{push.deleted}</span>
-                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{push.time}</div>
+                  <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>{push.time}</div>
                 </div>
               </div>
             ))}
@@ -975,57 +1031,57 @@ export default function LandingPage({
       {/* 6. Feature Matrix with Real 3D Rendered Icons */}
       <section
         id="features"
+        className="responsive-page-container"
         style={{
-          padding: '80px 24px',
-          maxWidth: '1240px',
-          margin: '0 auto',
+          paddingTop: '60px',
+          paddingBottom: '60px',
           position: 'relative',
           zIndex: 1,
         }}
       >
-        <div style={{ textAlign: 'center', marginBottom: '55px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '45px' }}>
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
               color: 'var(--accent-primary)',
-              fontSize: '0.85rem',
+              fontSize: '0.825rem',
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
               marginBottom: '8px',
             }}
           >
-            <Sparkles size={16} /> 3D Architecture & Core Pillars
+            <Sparkles size={15} /> 3D Architecture & Core Pillars
           </div>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }}>Engineered for Enterprise Visibility & Control</h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '680px', margin: '8px auto 0' }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800 }}>Engineered for Enterprise Visibility & Control</h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', maxWidth: '680px', margin: '8px auto 0' }}>
             Built specifically for Engineering Directors, Tech Leads, and Security Officers who need complete GitOps transparency.
           </p>
         </div>
 
         {/* 3D Features Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '28px' }}>
+        <div className="responsive-grid-3">
           {/* Card 1: 3D Lightning Telemetry */}
-          <div className="card-3d" style={{ padding: '32px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+          <div className="card-3d" style={{ padding: 'clamp(20px, 3.5vw, 32px)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>
               <div className="pedestal-3d">
                 <img
                   src="/assets/icon_3d_lightning.jpg"
                   alt="3D Telemetry Icon"
-                  style={{ width: 68, height: 68, objectFit: 'cover' }}
+                  style={{ width: 56, height: 56, objectFit: 'cover' }}
                 />
               </div>
               <div>
                 <span className="badge badge-push">Sub-Second Webhooks</span>
-                <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginTop: '4px' }}>Real-Time Push Telemetry</h3>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginTop: '4px' }}>Real-Time Push Telemetry</h3>
               </div>
             </div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.6 }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.6 }}>
               Instant visibility into who pushed code, branch targets, commit messages, and numerical line additions/deletions diff stats. Zero polling required; updates dispatch in under 200ms.
             </p>
-            <div style={{ marginTop: '20px', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            <div style={{ marginTop: '18px', borderTop: '1px solid var(--border-subtle)', paddingTop: '14px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
               <span className="badge badge-push">+ Additions</span>
               <span className="badge badge-admin">- Deletions</span>
               <span className="badge badge-pull">Branch Tracking</span>
@@ -1033,24 +1089,24 @@ export default function LandingPage({
           </div>
 
           {/* Card 2: 3D Shield RBAC Access Hub */}
-          <div className="card-3d" style={{ padding: '32px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+          <div className="card-3d" style={{ padding: 'clamp(20px, 3.5vw, 32px)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>
               <div className="pedestal-3d">
                 <img
                   src="/assets/icon_3d_shield.jpg"
                   alt="3D Security Shield Icon"
-                  style={{ width: 68, height: 68, objectFit: 'cover' }}
+                  style={{ width: 56, height: 56, objectFit: 'cover' }}
                 />
               </div>
               <div>
                 <span className="badge badge-admin">SOC-2 Audited</span>
-                <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginTop: '4px' }}>1-Click Access Control</h3>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginTop: '4px' }}>1-Click Access Control</h3>
               </div>
             </div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.6 }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.6 }}>
               Centrally view and modify repository collaborator permissions across your entire organization. Grant Admin, Push, Maintain, or Pull access in 1 click with automated compliance audit records.
             </p>
-            <div style={{ marginTop: '20px', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            <div style={{ marginTop: '18px', borderTop: '1px solid var(--border-subtle)', paddingTop: '14px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
               <span className="badge badge-admin">Instant Revoke</span>
               <span className="badge badge-maintain">Role Escalation</span>
               <span className="badge badge-pull">Security Logs</span>
@@ -1058,24 +1114,24 @@ export default function LandingPage({
           </div>
 
           {/* Card 3: 3D Git Cube Developer Intelligence */}
-          <div className="card-3d" style={{ padding: '32px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+          <div className="card-3d" style={{ padding: 'clamp(20px, 3.5vw, 32px)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>
               <div className="pedestal-3d">
                 <img
                   src="/assets/icon_3d_gitcube.jpg"
                   alt="3D Git Cube Icon"
-                  style={{ width: 68, height: 68, objectFit: 'cover' }}
+                  style={{ width: 56, height: 56, objectFit: 'cover' }}
                 />
               </div>
               <div>
                 <span className="badge badge-maintain">Leaderboard & DORA</span>
-                <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginTop: '4px' }}>Engineering Velocity</h3>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginTop: '4px' }}>Engineering Velocity</h3>
               </div>
             </div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.6 }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.6 }}>
               Recognize top committers, identify code bottlenecks, and analyze engineering throughput with commit heatmaps and developer velocity profiles across 7, 30, and 90-day intervals.
             </p>
-            <div style={{ marginTop: '20px', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            <div style={{ marginTop: '18px', borderTop: '1px solid var(--border-subtle)', paddingTop: '14px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
               <span className="badge badge-maintain">Gold / Silver / Bronze</span>
               <span className="badge badge-push">Lines Heatmap</span>
               <span className="badge badge-pull">Dev Profiles</span>
@@ -1087,32 +1143,32 @@ export default function LandingPage({
       {/* 7. Interactive ROI & Engineering Hours Calculator */}
       <section
         id="roi-calculator"
+        className="responsive-page-container"
         style={{
-          padding: '70px 24px',
-          maxWidth: '1160px',
-          margin: '0 auto',
+          paddingTop: '50px',
+          paddingBottom: '50px',
           position: 'relative',
           zIndex: 1,
         }}
       >
-        <div className="card-3d" style={{ padding: '40px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+        <div className="card-3d" style={{ padding: 'clamp(20px, 4vw, 36px)' }}>
+          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
             <span className="badge badge-maintain">Business Impact Calculator</span>
-            <h2 style={{ fontSize: '2.2rem', fontWeight: 800, marginTop: '10px' }}>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.2rem)', fontWeight: 800, marginTop: '8px' }}>
               Calculate Your Team's Productivity & Compliance ROI
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '4px' }}>
               Adjust the sliders below to see how much time and money GitPulse saves your engineering team.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '36px', alignItems: 'center' }}>
+          <div className="responsive-grid-2" style={{ alignItems: 'center' }}>
             {/* Sliders Area */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <label style={{ fontWeight: 600, fontSize: '0.9rem' }}>Team Size (Developers)</label>
-                  <span style={{ fontWeight: 700, color: 'var(--accent-primary)', fontSize: '1.1rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                  <label style={{ fontWeight: 600, fontSize: '0.875rem' }}>Team Size (Developers)</label>
+                  <span style={{ fontWeight: 700, color: 'var(--accent-primary)', fontSize: '1rem' }}>
                     {teamSize} devs
                   </span>
                 </div>
@@ -1122,14 +1178,14 @@ export default function LandingPage({
                   max="150"
                   value={teamSize}
                   onChange={(e) => setTeamSize(Number(e.target.value))}
-                  style={{ width: '100%', accentColor: 'var(--accent-primary)' }}
+                  style={{ width: '100%', accentColor: 'var(--accent-primary)', cursor: 'pointer' }}
                 />
               </div>
 
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <label style={{ fontWeight: 600, fontSize: '0.9rem' }}>Commits Pushed per Week</label>
-                  <span style={{ fontWeight: 700, color: '#06b6d4', fontSize: '1.1rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                  <label style={{ fontWeight: 600, fontSize: '0.875rem' }}>Commits Pushed per Week</label>
+                  <span style={{ fontWeight: 700, color: '#06b6d4', fontSize: '1rem' }}>
                     {commitsPerWeek} commits
                   </span>
                 </div>
@@ -1140,7 +1196,7 @@ export default function LandingPage({
                   step="10"
                   value={commitsPerWeek}
                   onChange={(e) => setCommitsPerWeek(Number(e.target.value))}
-                  style={{ width: '100%', accentColor: '#06b6d4' }}
+                  style={{ width: '100%', accentColor: '#06b6d4', cursor: 'pointer' }}
                 />
               </div>
             </div>
@@ -1151,26 +1207,26 @@ export default function LandingPage({
                 background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(6, 182, 212, 0.1))',
                 border: '1px solid rgba(99, 102, 241, 0.3)',
                 borderRadius: '16px',
-                padding: '28px',
+                padding: '24px',
                 textAlign: 'center',
               }}
             >
-              <div style={{ fontSize: '0.85rem', color: '#a5b4fc', textTransform: 'uppercase', fontWeight: 700 }}>
+              <div style={{ fontSize: '0.78rem', color: '#a5b4fc', textTransform: 'uppercase', fontWeight: 700 }}>
                 Estimated Monthly Savings
               </div>
-              <div style={{ fontSize: '3rem', fontWeight: 900, color: '#ffffff', margin: '8px 0' }}>
+              <div style={{ fontSize: 'clamp(2rem, 5vw, 2.8rem)', fontWeight: 900, color: '#ffffff', margin: '6px 0' }}>
                 ~${costSavingsPerMonth.toLocaleString()}
-                <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: 500 }}> / month</span>
+                <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 400 }}> / mo</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginTop: '14px', flexWrap: 'wrap' }}>
                 <div>
-                  <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#34d399' }}>{hoursSavedPerMonth} hrs</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Admin Work Saved</div>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#34d399' }}>{hoursSavedPerMonth} hrs</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Admin Work Saved</div>
                 </div>
                 <div style={{ width: 1, background: 'var(--border-subtle)' }} />
                 <div>
-                  <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fbbf24' }}>85%</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Audit Time Slashed</div>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fbbf24' }}>85%</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Audit Time Slashed</div>
                 </div>
               </div>
             </div>
@@ -1181,32 +1237,32 @@ export default function LandingPage({
       {/* 8. Pricing Plans Section */}
       <section
         id="pricing"
+        className="responsive-page-container"
         style={{
-          padding: '80px 24px',
-          maxWidth: '1240px',
-          margin: '0 auto',
+          paddingTop: '60px',
+          paddingBottom: '60px',
           position: 'relative',
           zIndex: 1,
         }}
       >
-        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
               color: 'var(--accent-primary)',
-              fontSize: '0.85rem',
+              fontSize: '0.825rem',
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
               marginBottom: '8px',
             }}
           >
-            <CreditCard size={16} /> Transparent Pricing
+            <CreditCard size={15} /> Transparent Pricing
           </div>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }}>Predictable Plans for Engineering Teams</h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', margin: '8px auto 24px', maxWidth: '600px' }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800 }}>Predictable Plans for Engineering Teams</h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', margin: '8px auto 20px', maxWidth: '600px' }}>
             Get started for free in our sandbox or upgrade for unlimited repositories and automated RBAC.
           </p>
 
@@ -1219,17 +1275,19 @@ export default function LandingPage({
               padding: '4px',
               borderRadius: '9999px',
               border: '1px solid var(--border-subtle)',
+              maxWidth: '100%',
+              boxSizing: 'border-box',
             }}
           >
             <button
               onClick={() => setBillingCycle('monthly')}
               style={{
-                padding: '6px 16px',
+                padding: '6px 14px',
                 borderRadius: '9999px',
                 border: 'none',
                 background: billingCycle === 'monthly' ? 'var(--accent-primary)' : 'transparent',
                 color: '#fff',
-                fontSize: '0.85rem',
+                fontSize: '0.8rem',
                 fontWeight: 600,
                 cursor: 'pointer',
               }}
@@ -1239,17 +1297,17 @@ export default function LandingPage({
             <button
               onClick={() => setBillingCycle('annual')}
               style={{
-                padding: '6px 16px',
+                padding: '6px 14px',
                 borderRadius: '9999px',
                 border: 'none',
                 background: billingCycle === 'annual' ? 'var(--accent-primary)' : 'transparent',
                 color: '#fff',
-                fontSize: '0.85rem',
+                fontSize: '0.8rem',
                 fontWeight: 600,
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '4px',
               }}
             >
               Annual Billing
@@ -1257,49 +1315,49 @@ export default function LandingPage({
                 style={{
                   background: '#10b981',
                   color: '#fff',
-                  fontSize: '0.65rem',
-                  padding: '2px 6px',
+                  fontSize: '0.625rem',
+                  padding: '2px 5px',
                   borderRadius: '9999px',
                   fontWeight: 700,
                 }}
               >
-                Save 20%
+                -20%
               </span>
             </button>
           </div>
         </div>
 
         {/* Pricing Cards Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px' }}>
+        <div className="responsive-grid-3">
           {/* Plan 1: Starter */}
-          <div className="card-3d" style={{ padding: '36px', display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+          <div className="card-3d" style={{ padding: 'clamp(20px, 3.5vw, 32px)', display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)' }}>
               Starter Sandbox
             </span>
-            <div style={{ fontSize: '2.5rem', fontWeight: 900, margin: '14px 0 8px' }}>
-              ₹0 <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: 400 }}>/ month</span>
+            <div style={{ fontSize: '2.2rem', fontWeight: 900, margin: '12px 0 6px' }}>
+              ₹0 <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 400 }}>/ month</span>
             </div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '24px' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '20px' }}>
               Ideal for small teams wanting real-time push tracking and basic committer visibility.
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px', flex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> Up to 3 GitHub Repositories
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px', flex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> Up to 3 GitHub Repositories
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> Up to 5 Developers Tracked
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> Up to 5 Developers Tracked
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> Real-time Push Telemetry Stream
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> Real-time Push Telemetry Stream
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> 7-Day Commit History
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> 7-Day Commit History
               </div>
             </div>
             <button
               onClick={onLaunchDemo}
               className="btn-secondary"
-              style={{ width: '100%', justifyContent: 'center', padding: '12px' }}
+              style={{ width: '100%', justifyContent: 'center', padding: '10px' }}
             >
               Start Free in Sandbox
             </button>
@@ -1309,7 +1367,7 @@ export default function LandingPage({
           <div
             className="card-3d glow-accent"
             style={{
-              padding: '36px',
+              padding: 'clamp(20px, 3.5vw, 32px)',
               display: 'flex',
               flexDirection: 'column',
               borderColor: 'rgba(99, 102, 241, 0.5)',
@@ -1317,74 +1375,74 @@ export default function LandingPage({
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--accent-primary)' }}>
+              <span style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--accent-primary)' }}>
                 Pro Team Plan
               </span>
               <span className="badge badge-push">Most Popular</span>
             </div>
-            <div style={{ fontSize: '2.5rem', fontWeight: 900, margin: '14px 0 8px' }}>
+            <div style={{ fontSize: '2.2rem', fontWeight: 900, margin: '12px 0 6px' }}>
               ₹{billingCycle === 'annual' ? '1,599' : '1,999'}{' '}
-              <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: 400 }}>/ month</span>
+              <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 400 }}>/ month</span>
             </div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '24px' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '20px' }}>
               Complete code velocity tracking, 1-click RBAC access hub, and SOC-2 audit trails.
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px', flex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> Unlimited GitHub Repositories
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px', flex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> Unlimited GitHub Repositories
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> Up to 25 Developers Tracked
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> Up to 25 Developers Tracked
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> 1-Click Access Grant & Revoke
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> 1-Click Access Grant & Revoke
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> Immutable SOC-2 Compliance Audit Logs
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> Immutable SOC-2 Audit Logs
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> 90-Day Velocity Analytics & DORA Metrics
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> 90-Day Analytics & DORA Metrics
               </div>
             </div>
             <button
               onClick={onLaunchDemo}
               className="btn-primary"
-              style={{ width: '100%', justifyContent: 'center', padding: '12px', fontSize: '0.95rem' }}
+              style={{ width: '100%', justifyContent: 'center', padding: '11px', fontSize: '0.9rem' }}
             >
-              <Zap size={16} /> Launch Pro Sandbox
+              <Zap size={15} /> Launch Pro Sandbox
             </button>
           </div>
 
           {/* Plan 3: Enterprise */}
-          <div className="card-3d" style={{ padding: '36px', display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+          <div className="card-3d" style={{ padding: 'clamp(20px, 3.5vw, 32px)', display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)' }}>
               Enterprise Scale
             </span>
-            <div style={{ fontSize: '2.5rem', fontWeight: 900, margin: '14px 0 8px' }}>
+            <div style={{ fontSize: '2.2rem', fontWeight: 900, margin: '12px 0 6px' }}>
               ₹{billingCycle === 'annual' ? '7,199' : '8,999'}{' '}
-              <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: 400 }}>/ month</span>
+              <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 400 }}>/ month</span>
             </div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '24px' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '20px' }}>
               Custom compliance policies, self-hosted runner support, and dedicated SLAs.
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px', flex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> Unlimited Repos & Contributors
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px', flex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> Unlimited Repos & Contributors
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> GitHub Enterprise Server & Cloud Support
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> GitHub Enterprise Server Support
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> Dedicated Security Engineer & Custom SLA
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> Dedicated Security Engineer & SLA
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' }}>
-                <Check size={16} color="#34d399" /> Custom Webhook Ingestion Pipelines
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.825rem' }}>
+                <Check size={15} color="#34d399" /> Custom Webhook Ingestion Pipelines
               </div>
             </div>
             <button
               onClick={onOpenAuth}
               className="btn-secondary"
-              style={{ width: '100%', justifyContent: 'center', padding: '12px' }}
+              style={{ width: '100%', justifyContent: 'center', padding: '10px' }}
             >
               Contact Enterprise Sales
             </button>
@@ -1395,38 +1453,39 @@ export default function LandingPage({
       {/* 9. FAQ Section */}
       <section
         id="faq"
+        className="responsive-page-container"
         style={{
-          padding: '80px 24px',
+          paddingTop: '60px',
+          paddingBottom: '60px',
           maxWidth: '860px',
-          margin: '0 auto',
           position: 'relative',
           zIndex: 1,
         }}
       >
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h2 style={{ fontSize: '2.2rem', fontWeight: 800 }}>Frequently Asked Questions</h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginTop: '6px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+          <h2 style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.3rem)', fontWeight: 800 }}>Frequently Asked Questions</h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '4px' }}>
             Everything you need to know about GitPulse security, permissions, and architecture.
           </p>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {faqs.map((faq, idx) => (
             <div
               key={idx}
               className="card-3d"
               style={{
-                padding: '20px 24px',
+                padding: '16px 20px',
                 cursor: 'pointer',
               }}
               onClick={() => toggleFaq(idx)}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 600 }}>{faq.q}</h4>
-                {openFaq === idx ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
+                <h4 style={{ fontSize: '0.95rem', fontWeight: 600 }}>{faq.q}</h4>
+                {openFaq === idx ? <ChevronUp size={18} style={{ flexShrink: 0 }} /> : <ChevronDown size={18} style={{ flexShrink: 0 }} />}
               </div>
               {openFaq === idx && (
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6, marginTop: '12px' }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6, marginTop: '10px' }}>
                   {faq.a}
                 </p>
               )}
@@ -1437,32 +1496,33 @@ export default function LandingPage({
 
       {/* 10. Global Bottom Floating Quick Switcher Dock */}
       <div className="quick-switch-dock">
-        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Navigation:</span>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           style={{
             background: 'none',
             border: 'none',
             color: '#a5b4fc',
-            fontSize: '0.825rem',
+            fontSize: '0.775rem',
             fontWeight: 600,
             cursor: 'pointer',
-            padding: '4px 8px',
+            padding: '4px 6px',
+            whiteSpace: 'nowrap',
           }}
         >
-          🌐 Presentation Portal
+          🌐 Presentation
         </button>
         <span style={{ color: 'rgba(255, 255, 255, 0.2)' }}>|</span>
         <button
           onClick={user ? onOpenDashboard : onLaunchDemo}
           className="btn-primary"
           style={{
-            fontSize: '0.825rem',
-            padding: '6px 14px',
+            fontSize: '0.775rem',
+            padding: '5px 12px',
             borderRadius: '9999px',
+            whiteSpace: 'nowrap',
           }}
         >
-          <Zap size={14} /> {user ? 'Open Dashboard →' : 'Launch Live Demo Dashboard →'}
+          <Zap size={13} /> {user ? 'Open Dashboard →' : 'Launch Live Demo →'}
         </button>
       </div>
 
@@ -1470,24 +1530,24 @@ export default function LandingPage({
       <footer
         style={{
           borderTop: '1px solid var(--border-subtle)',
-          padding: '60px 24px 100px',
+          padding: '40px 16px 90px',
           background: 'rgba(7, 10, 18, 0.95)',
           position: 'relative',
           zIndex: 1,
+          width: '100%',
         }}
       >
         <div
+          className="responsive-page-container"
           style={{
-            maxWidth: '1240px',
-            margin: '0 auto',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '24px',
+            gap: '16px',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
             <div
               style={{
                 background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
@@ -1496,21 +1556,21 @@ export default function LandingPage({
                 color: '#fff',
               }}
             >
-              <GitBranch size={18} />
+              <GitBranch size={16} />
             </div>
-            <span style={{ fontWeight: 800, fontSize: '1.1rem' }}>GitPulse</span>
-            <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
+            <span style={{ fontWeight: 800, fontSize: '1rem' }}>GitPulse</span>
+            <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>
               © 2026 Acme Technologies. All rights reserved.
             </span>
           </div>
 
-          <div style={{ display: 'flex', gap: '24px', fontSize: '0.85rem' }}>
+          <div style={{ display: 'flex', gap: '16px', fontSize: '0.8rem', flexWrap: 'wrap' }}>
             <a href="#features" className="nav-link">Features</a>
             <a href="#pricing" className="nav-link">Pricing</a>
             <a href="#faq" className="nav-link">FAQ</a>
             <button
               onClick={user ? onOpenDashboard : onLaunchDemo}
-              style={{ background: 'none', border: 'none', color: '#c7d2fe', cursor: 'pointer', fontWeight: 600 }}
+              style={{ background: 'none', border: 'none', color: '#c7d2fe', cursor: 'pointer', fontWeight: 600, fontSize: '0.8rem' }}
             >
               Live SaaS Dashboard
             </button>

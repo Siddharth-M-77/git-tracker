@@ -115,8 +115,8 @@ export default function LeaderboardView({ leaderboard, onSelectDeveloper, onTime
       </div>
 
       {/* Leaderboard Table Card */}
-      <div className="glass-panel" style={{ overflow: 'hidden' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+      <div className="card-3d table-responsive">
+        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '700px' }}>
           <thead>
             <tr style={{
               background: 'rgba(255, 255, 255, 0.03)',
